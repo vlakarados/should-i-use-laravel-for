@@ -18,7 +18,7 @@
     <section class="main-content">
       <p>Just input the project name and/or description and click the button!</p>
       
-      <p>Should I use Laravel framework for building <input type="text" placeholder="my project name and description">
+      <p>Should I use Laravel framework for building <input id="inp" type="text" placeholder="my project name and description">
       <button id="findout">Find out!</button></p>
       
       <p id="imgresult" style="display:none;height:500px;width:800px;background:url('https://i.imgflip.com/bxqal.gif');background-size:100%;background-position:center;"></p>
@@ -32,13 +32,38 @@
     </section>
 
 <script>
+function arrayContains(needle, arrhaystack)
+  {
+    return (arrhaystack.indexOf(needle) > -1);
+  }
+
   var btn = document.getElementById("findout");
   var result = document.getElementById("result");
   var imgresult = document.getElementById("imgresult");
   var size = 100;
+
+  var yes = 'yes ';
+  var no = 'no ';
+
+  var yesgif = 'https://media.riffsy.com/images/098bb9b3ddcceba5e7a8dfc8890ef684/raw';
+  var nogif = 'https://i.imgflip.com/bxqal.gif';
+
+  var answer = no;
+  var gif = nogif;
+
+  var positives = ["nothing", "shit", "bullshit", "crap"];
+
   btn.onclick = function() {
+
+      if (arrayContains(document.getElementById('inp').value, positives)) {
+        answer = yes;
+        gif = yesgif;
+      }
+      imgresult.style.backgroundImage = gif;
+
+
       setInterval(function() {
-        result.appendChild(document.createTextNode("no "));
+        result.appendChild(document.createTextNode(answer));
       }, 75);
       setTimeout(function() {
         imgresult.style.display = "block";
@@ -47,6 +72,7 @@
         }, 280);
       }, 5000);
   };
+
 </script>
   
   </body>
