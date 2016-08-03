@@ -34,7 +34,7 @@
   var result = document.getElementById("result");
   btn.onclick = function() {
       setInterval(function() {
-        result.innerHTML = result.innerHTML + document.createTextNode('no ');
+        result.appendChild(document.createTextNode("no "));
     }, 75);
   };
 </script>
